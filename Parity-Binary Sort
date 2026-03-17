@@ -1,0 +1,43 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.*;
+class TestClass {
+     static int countBits(int n) {
+        return Integer.bitCount(n);
+    }
+    public static void main(String args[] ) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       int T=Integer.parseInt(br.readLine().trim());
+       while(T-- >0){
+        int N=Integer.parseInt(br.readLine().trim());
+        String[] input=br.readLine().trim().split("\\s+");
+        int[]arr=new int[N];
+           for (int i = 0; i < N; i++) {
+                arr[i] = Integer.parseInt(input[i]);
+            }
+            List<Integer>even=new ArrayList<>();
+             List<Integer>odd=new ArrayList<>();
+             for(int num:arr){
+                if(countBits(num)%2==0){
+                    even.add(num);
+                }
+                else{
+                    odd.add(num);
+                }
+             }
+             Collections.sort(even);
+            Collections.sort(odd);
+             StringBuilder sb = new StringBuilder();
+            
+            for (int x : even) {
+                sb.append(x).append(" ");
+            }
+            
+            for (int x : odd) {
+                sb.append(x).append(" ");
+            }
+            
+            System.out.println(sb.toString().trim());
+       }
+    }
+}
