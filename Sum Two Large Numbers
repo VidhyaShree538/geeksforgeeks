@@ -1,0 +1,26 @@
+class Solution {
+    String findSum(String s1, String s2) {
+      int i=s1.length()-1;
+      int j=s2.length()-1;
+      int carry=0;
+      StringBuilder res=new StringBuilder ();
+      while(i>=0||j>=0){
+          int sum=carry;
+          if(i>=0)
+              sum+=s1.charAt(i--)-'0';
+          
+          if(j>=0)
+              sum+=s2.charAt(j--)-'0';
+          res.append(sum%10);
+          carry=sum/10;
+      }
+    if(carry>0)
+       res.append(carry);
+    res.reverse();
+    int k=0;
+    while(k<res.length()-1&&res.charAt(k)=='0'){
+        k++;
+    }
+    return res.substring(k);
+    }
+}
